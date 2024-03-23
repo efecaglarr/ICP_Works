@@ -1,0 +1,8 @@
+{
+    "prettier.bracketSameLine": false,
+    "prettier.arrowParens": "always",
+    "prettier.bracketSpacing": false,
+    "prettier.singleQuote": false,
+    "prettier.useEditorConfig": true,
+    "prettier.useTabs": true
+}

@@ -3,6 +3,8 @@ import Option "mo:base/Option";
 import Trie "mo:base/Trie";
 import Nat32 "mo:base/Nat32";
 import Text "mo:base/Text";
+import Iter "mo:base/Iter";
+import Array "mo:base/Array";
 
 actor {
 
@@ -30,6 +32,14 @@ actor {
     ).0;
     superheroId
   };
+
+  public query func getHeroPosts(): async [SuperHeroType] {
+  let iterator = Trie.iter(superheroes);
+  let array = Iter.toArray(iterator);
+  let posts = Array.map<(SuperHeroId, SuperHeroType), SuperHeroType>(array, func((_, post)) { post });
+  return posts;
+};
+
 
   public func read(superheroId: SuperHeroId) : async ?SuperHeroType {
     let result = Trie.find(superheroes, key(superheroId), Nat32.equal);
